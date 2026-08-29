@@ -1,12 +1,12 @@
 "use client";
-
 import { useState } from "react";
 import { Wordmark } from "./Ui";
 import { NAV, GITHUB_URL, DEMO_URL } from "@/lib/site";
 
+const LOCAL_URL = "http://localhost:3000";
+
 export default function Nav() {
   const [open, setOpen] = useState(false);
-
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 md:px-5 md:pt-4">
       <nav
@@ -21,7 +21,6 @@ export default function Nav() {
         <a href="#top" className="flex items-center rounded-lg" aria-label="Jatayu — home">
           <Wordmark />
         </a>
-
         <ul className="hidden items-center gap-1 lg:flex">
           {NAV.map((item) => (
             <li key={item.href}>
@@ -31,9 +30,8 @@ export default function Nav() {
             </li>
           ))}
         </ul>
-
         <div className="flex items-center gap-2">
-          <a
+          
             className="btn btn-secondary btn-sm hidden sm:inline-flex"
             href={GITHUB_URL}
             target="_blank"
@@ -41,9 +39,9 @@ export default function Nav() {
           >
             GitHub
           </a>
-          <a
+          
             className="btn btn-primary btn-sm"
-            href={DEMO_URL ?? GITHUB_URL}
+            href={DEMO_URL ?? LOCAL_URL}
             target="_blank"
             rel="noreferrer noopener"
           >
@@ -67,7 +65,6 @@ export default function Nav() {
           </button>
         </div>
       </nav>
-
       {open ? (
         <div
           id="mobile-menu"
@@ -76,7 +73,7 @@ export default function Nav() {
           <ul className="flex flex-col">
             {NAV.map((item) => (
               <li key={item.href}>
-                <a
+                
                   className="block rounded-xl px-3 py-2.5 text-[15px] text-[var(--color-ink-soft)] hover:bg-[rgba(22,22,29,0.04)]"
                   href={item.href}
                   onClick={() => setOpen(false)}
@@ -86,7 +83,7 @@ export default function Nav() {
               </li>
             ))}
             <li>
-              <a
+              
                 className="block rounded-xl px-3 py-2.5 text-[15px] text-[var(--color-ink-soft)] hover:bg-[rgba(22,22,29,0.04)]"
                 href={GITHUB_URL}
                 target="_blank"
